@@ -1,0 +1,153 @@
+/* Container for the card */
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+.card {
+  width: 230px;
+  height: 330px;
+  perspective: 2000px; /* Create a 3D perspective */
+  position: relative;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s ease; /* Quick hover effect */
+}
+
+/* Both front and back side of the card */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Hide the back face when not visible */
+  transition: transform 0.6s ease; /* Smooth flipping transition */
+  border-radius: 14px;
+}
+
+/* The front side */
+.card-front {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(0deg); /* Initially showing front */
+  
+  /* border: #333 1px solid; */
+}
+
+/* The back side */
+.card-back {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg); /* Initially hidden */
+}
+
+/* When card is flipped, rotate both front and back */
+.card.flipped .card-front {
+  transform: rotateY(180deg); /* Rotate front out of view */
+}
+
+.card.flipped .card-back {
+  transform: rotateY(0deg); /* Rotate back into view */
+}
+
+/* Hover effect for card */
+.card:hover {
+  transform: scale(1.02); 
+  transition: transform 0.2s ease; 
+}
+
+/* Optional: Define a CSS variable for the border color */
+:root {
+  --border-color: #333;
+}
+
+.card-front {
+  /* border: var(--border-color) 1px solid;  */
+  border:  #304160 10px solid;
+  background-color: #d5e1ec;
+}
+
+.card{
+  margin: 20px;
+}
+
+.card-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.score-container{
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 32px; /* Title font size */
+  color: #ffcb05; /* Text color */
+  text-shadow: 
+  -3px -3px 0 #2a75bb,  /* Shadow positioned to the top-left */
+  3px -3px 0 #2a75bb,   /* Shadow positioned to the top-right */
+  -3px 3px 0 #2a75bb,   /* Shadow positioned to the bottom-left */
+  3px 3px 0 #2a75bb;    /* Shadow positioned to the bottom-right */
+}
+
+.score{
+  margin-right: 200px;
+}
+.highscore{
+  margin-left: 200px;
+}
+
+/* Button styles */
+.restart-button {
+  background-color: #ffcb05; /* Pokémon yellow */
+  color: #3d7dca; /* Pokémon blue */
+  border: 2px solid #2a75bb; /* Darker blue border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 5px 0px 10px 0px; /* Padding for button */
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pokemon Solid', sans-serif; /* Pokémon font */
+  font-size: 20px; /* Font size */
+  text-transform: uppercase; /* Uppercase text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition */
+  margin-top: 20px;
+}
+
+/* Button hover effect */
+.restart-button:hover {
+  background-color: #3d7dca; /* Change to blue on hover */
+  color: #ffcb05; /* Change text color to yellow */
+}
+
+/* Button active effect */
+.restart-button:active {
+  transform: translateY(5px); /* Slight dip effect */
+}
+
+.background-video {
+  position: fixed; /* Use fixed to make it fill the viewport */
+  top: 0;          /* Align to the top */
+  left: 0;         /* Align to the left */
+  width: 100%;     /* Fill the full width */
+  height: 100%;    /* Fill the full height */
+  background-size: cover; /* This makes the background cover the entire div */
+  background-position: center; /* Center the background */
+  z-index: -1; /* Ensures the background is behind other content */
+  overflow: hidden; /* Prevents overflow */
+}
+
+.score-container, .card-container, .restart-button {
+  position: relative;
+  z-index: 1; /* Ensure the text and cards are above the background */
+}
+
